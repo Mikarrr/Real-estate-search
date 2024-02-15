@@ -1,0 +1,35 @@
+.mockupLite {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 800px;
+  width: 70%;
+  background-color: rgb(216, 216, 216);
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 150px;
+
+  .mockupLeft {
+    background-color: black;
+    width: 50%;
+    height: 100%;
+  }
+  .mockupRight {
+    background-color: rgb(212, 212, 212);
+    width: 50%;
+    height: 100%;
+
+    .mockupFilterNav {
+      width: 100%;
+      height: 20%;
+      background-color: aqua;
+    }
+    .mockupList {
+      width: 100%;
+      height: 80%;
+      background-color: rgb(255, 94, 0);
+    }
+  }
+}
