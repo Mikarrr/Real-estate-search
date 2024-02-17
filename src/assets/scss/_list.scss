@@ -1,0 +1,32 @@
+.realEstate-list {
+  display: flex;
+  flex-direction: column;
+  width: 98%;
+  margin: 0 auto;
+  margin-top: 10px;
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+
+    th,
+    td {
+      padding: 10px;
+      text-align: center;
+    }
+    th {
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+
+      &:hover {
+        color: rgb(114, 114, 114);
+      }
+    }
+
+    tbody {
+      tr:nth-child(even) {
+        background-color: #dfdfdf;
+      }
+    }
+  }
+}

@@ -1,4 +1,4 @@
-import Lite from "./components/Mockups/Lite";
+import Lite from "./components/Mockups/Lite/Lite";
 import SearchFilter from "./components/searchFilter";
 import SearchHeader from "./components/searchHeader";
 import {
