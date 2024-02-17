@@ -1,12 +1,8 @@
-import Lite from "./components/Mockups/Lite/Lite";
-import SearchFilter from "./components/searchFilter";
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import SearchHeader from "./components/searchHeader";
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  Navigate,
-} from "react-router-dom";
+import SearchFilter from "./components/searchFilter";
+import Lite from "./components/Mockups/Lite/Lite";
 
 function App() {
   return (
@@ -15,7 +11,7 @@ function App() {
         <SearchHeader />
         <SearchFilter />
         <Routes>
-          <Route path="/lite" element={<Lite />} />
+          <Route path="/lite/*" element={<Lite />} />
         </Routes>
       </div>
     </Router>

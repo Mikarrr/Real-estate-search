@@ -24,8 +24,14 @@
     }
 
     tbody {
-      tr:nth-child(even) {
-        background-color: #dfdfdf;
+      width: 100%;
+      a {
+        text-decoration: none;
+        color: black;
+
+        .realEstate-preview:nth-child(even) {
+          background-color: #dfdfdf;
+        }
       }
     }
   }

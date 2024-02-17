@@ -32,6 +32,7 @@ const RealEstateList = () => {
     <div className="realEstate-list">
       {error && <div className="error">{error}</div>}
       {isPending && <div className="load">Loading...</div>}
+
       <LiteFilter data={startData} setData={handleFilterChange} />
       <table>
         <ListSortLogic data={filteredData} setData={handleSortedChange} />
