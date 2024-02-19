@@ -3,8 +3,7 @@ import { useState, useEffect } from "react";
 const ListSortLogic = ({ data, setData }) => {
   const [nameSortDirection, setNameSortDirection] = useState("asc");
   const [areaSortDirection, setAreaSortDirection] = useState("none");
-  const [bedroomsSortDirection, setBedroomsSortDirection] = useState("none");
-  const [bathroomsSortDirection, setBathroomsSortDirection] = useState("none");
+  const [roomsSortDirection, setroomsSortDirection] = useState("none");
   const [levelSortDirection, setLevelSortDirection] = useState("none");
 
   useEffect(() => {
@@ -22,22 +21,9 @@ const ListSortLogic = ({ data, setData }) => {
             return compareNumbers(a.area, b.area, areaSortDirection);
           });
           break;
-        case bedroomsSortDirection !== "none":
+        case roomsSortDirection !== "none":
           newData = [...data].sort((a, b) => {
-            return compareNumbers(
-              a.bedrooms,
-              b.bedrooms,
-              bedroomsSortDirection
-            );
-          });
-          break;
-        case bathroomsSortDirection !== "none":
-          newData = [...data].sort((a, b) => {
-            return compareNumbers(
-              a.bathrooms,
-              b.bathrooms,
-              bathroomsSortDirection
-            );
+            return compareNumbers(a.rooms, b.rooms, roomsSortDirection);
           });
           break;
         case levelSortDirection !== "none":
@@ -55,8 +41,7 @@ const ListSortLogic = ({ data, setData }) => {
     data,
     nameSortDirection,
     areaSortDirection,
-    bedroomsSortDirection,
-    bathroomsSortDirection,
+    roomsSortDirection,
     levelSortDirection,
     setData,
   ]);
@@ -84,41 +69,30 @@ const ListSortLogic = ({ data, setData }) => {
       case "name":
         setNameSortDirection(nameSortDirection === "asc" ? "desc" : "asc");
         setAreaSortDirection("none");
-        setBedroomsSortDirection("none");
-        setBathroomsSortDirection("none");
+        setroomsSortDirection("none");
+
         setLevelSortDirection("none");
         break;
       case "area":
         setAreaSortDirection(areaSortDirection === "asc" ? "desc" : "asc");
         setNameSortDirection("none");
-        setBedroomsSortDirection("none");
-        setBathroomsSortDirection("none");
+        setroomsSortDirection("none");
+
         setLevelSortDirection("none");
         break;
-      case "bedrooms":
-        setBedroomsSortDirection(
-          bedroomsSortDirection === "asc" ? "desc" : "asc"
-        );
+      case "rooms":
+        setroomsSortDirection(roomsSortDirection === "asc" ? "desc" : "asc");
         setNameSortDirection("none");
         setAreaSortDirection("none");
-        setBathroomsSortDirection("none");
-        setLevelSortDirection("none");
-        break;
-      case "bathrooms":
-        setBathroomsSortDirection(
-          bathroomsSortDirection === "asc" ? "desc" : "asc"
-        );
-        setNameSortDirection("none");
-        setAreaSortDirection("none");
-        setBedroomsSortDirection("none");
+
         setLevelSortDirection("none");
         break;
       case "level":
         setLevelSortDirection(levelSortDirection === "asc" ? "desc" : "asc");
         setNameSortDirection("none");
         setAreaSortDirection("none");
-        setBedroomsSortDirection("none");
-        setBathroomsSortDirection("none");
+        setroomsSortDirection("none");
+
         break;
       default:
         break;
@@ -126,27 +100,21 @@ const ListSortLogic = ({ data, setData }) => {
   };
 
   return (
-    <>
-      <thead>
-        <tr>
-          <th onClick={() => handleSortDirectionChange("name")}>
-            Nazwa {nameSortDirection === "asc" ? "↑" : "↓"}
-          </th>
-          <th onClick={() => handleSortDirectionChange("area")}>
-            Powierzchnia {areaSortDirection === "asc" ? "↑" : "↓"}
-          </th>
-          <th onClick={() => handleSortDirectionChange("bedrooms")}>
-            Sypialnie {bedroomsSortDirection === "asc" ? "↑" : "↓"}
-          </th>
-          <th onClick={() => handleSortDirectionChange("bathrooms")}>
-            Łazienki {bathroomsSortDirection === "asc" ? "↑" : "↓"}
-          </th>
-          <th onClick={() => handleSortDirectionChange("level")}>
-            Piętro {levelSortDirection === "asc" ? "↑" : "↓"}
-          </th>
-        </tr>
-      </thead>
-    </>
+    <div class="realEstate-header">
+      <p onClick={() => handleSortDirectionChange("name")}>
+        Name {nameSortDirection === "asc" ? "↑" : "↓"}
+      </p>
+      <p onClick={() => handleSortDirectionChange("area")}>
+        Area {areaSortDirection === "asc" ? "↑" : "↓"}
+      </p>
+      <p onClick={() => handleSortDirectionChange("rooms")}>
+        Rooms {roomsSortDirection === "asc" ? "↑" : "↓"}
+      </p>
+
+      <p onClick={() => handleSortDirectionChange("level")}>
+        Level {levelSortDirection === "asc" ? "↑" : "↓"}
+      </p>
+    </div>
   );
 };
 

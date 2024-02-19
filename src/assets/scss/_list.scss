@@ -4,35 +4,47 @@
   width: 98%;
   margin: 0 auto;
   margin-top: 10px;
+  position: relative;
+}
+.realEstate-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 10px;
 
-  table {
-    width: 100%;
-    border-collapse: collapse;
+  p {
+    flex: 1;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    color: white;
 
-    th,
-    td {
-      padding: 10px;
-      text-align: center;
+    &:hover {
+      color: #a1a1a1;
     }
-    th {
-      cursor: pointer;
-      transition: all 0.2s ease-in-out;
+  }
+}
 
-      &:hover {
-        color: rgb(114, 114, 114);
-      }
-    }
+.realEstate-preview {
+  display: flex;
+  justify-content: space-between;
+  text-decoration: none;
+  color: white;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #646464;
+  background-color: hsla(0, 0, 0, 0.3);
+  border-radius: 5px;
+  margin-bottom: 5px;
+  transition: all 0.4s ease-in-out;
 
-    tbody {
-      width: 100%;
-      a {
-        text-decoration: none;
-        color: black;
+  p {
+    flex: 1;
+    text-align: center;
+  }
 
-        .realEstate-preview:nth-child(even) {
-          background-color: #dfdfdf;
-        }
-      }
-    }
+  &:hover {
+    background-color: hsla(0, 0%, 80%, 0.5);
   }
 }

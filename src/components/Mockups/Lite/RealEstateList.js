@@ -34,10 +34,10 @@ const RealEstateList = () => {
       {isPending && <div className="load">Loading...</div>}
 
       <LiteFilter data={startData} setData={handleFilterChange} />
-      <table>
+      <div class="realEstate-list">
         <ListSortLogic data={filteredData} setData={handleSortedChange} />
         <RealEstateTable data={sortedData} />
-      </table>
+      </div>
     </div>
   );
 };

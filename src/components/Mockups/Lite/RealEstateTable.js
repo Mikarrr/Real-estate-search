@@ -3,22 +3,24 @@ import { Link } from "react-router-dom";
 
 const RealEstateTable = ({ data }) => {
   return (
-    <tbody>
+    <div class="realEstate-items">
       {data &&
         data.map((realEstate) => (
-          <tr className="realEstate-preview" key={realEstate.id}>
-            <Link to={`real-estate/${realEstate.id}`}>
-              <td>{realEstate.name}</td>
-            </Link>
-            <td>
+          <Link
+            to={`real-estate/${realEstate.id}`}
+            class="realEstate-preview"
+            key={realEstate.id}
+          >
+            <p>{realEstate.name}</p>
+            <p>
               {realEstate.area}m<sup>2</sup>
-            </td>
-            <td>{realEstate.bedrooms}</td>
-            <td>{realEstate.bathrooms}</td>
-            <td>{realEstate.level}</td>
-          </tr>
+            </p>
+            <p>{realEstate.rooms}</p>
+
+            <p>{realEstate.level}</p>
+          </Link>
         ))}
-    </tbody>
+    </div>
   );
 };
 

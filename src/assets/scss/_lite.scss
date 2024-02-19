@@ -4,20 +4,24 @@
   justify-content: center;
   align-items: center;
   height: 950px;
-  width: 70%;
-  background-color: rgb(216, 216, 216);
+  width: 90%;
+  background: url("../../../public/photos/3dmodel.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   margin: 0 auto;
   text-align: center;
   margin-top: 20px;
   margin-bottom: 150px;
 
   .mockupLeft {
-    background-color: black;
-    width: 50%;
-    height: 100%;
-  }
-  .mockupRight {
-    background-color: rgb(212, 212, 212);
+    background: rgb(0, 0, 0);
+    /*background: linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.8) 0%,
+      rgba(0, 0, 0, 0.4) 90%,
+      rgba(0, 0, 0, 0) 100%
+    );*/
     width: 50%;
     height: 100%;
 
@@ -26,7 +30,14 @@
       height: 100%;
       overflow: scroll;
       overflow-x: hidden;
-      scrollbar-width: thin;
     }
+    .mockupList::-webkit-scrollbar {
+      display: none;
+    }
+  }
+  .mockupRight {
+    width: 50%;
+    height: 100%;
+    background: rgb(201, 201, 201);
   }
 }
