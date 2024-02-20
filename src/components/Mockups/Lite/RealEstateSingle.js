@@ -2,7 +2,7 @@ import React from "react";
 import useFetchViewRealEstate from "../../useFetch/useFetchViewRealEstate";
 import { Link } from "react-router-dom";
 
-const RealEstateSingle = ({ id }) => {
+const RealEstateSingle = ({ id, clickVisibleValueChange }) => {
   const {
     data: realEstate,
     isPending,
@@ -16,22 +16,21 @@ const RealEstateSingle = ({ id }) => {
       {realEstate && (
         <>
           <div className="single-header">
-            <h1>MIESKZANIE: {realEstate.name}</h1>
-            <Link to={`/lite`}>
-              <p> wróć do wyszukiwarki mieszkań</p>
+            <h1>APARTMENT: {realEstate.name}</h1>
+            <Link to={`/lite`} onClick={() => clickVisibleValueChange(false)}>
+              <p>return to the apartment search engine</p>
             </Link>
-            <p>DOSTĘPNE</p>
+            <p>Available</p>
           </div>
           <div className="single-iframe">
             <img src={realEstate.viewphoto} alt="realestateviewphoto" />
           </div>
           <div className="single-body">
             <div className="single-body-info">
-              <p> Powierzchnia: {realEstate.area}</p>
-              <p> Piętro: {realEstate.level}</p>
-              <p>Cena: {realEstate.price} </p>
+              <p> Area: {realEstate.area}</p>
+              <p> Level: {realEstate.level}</p>
+              <p>Price: {realEstate.price} PLN</p>
             </div>
-            <button>Wyślij zapytanie</button>
           </div>
         </>
       )}

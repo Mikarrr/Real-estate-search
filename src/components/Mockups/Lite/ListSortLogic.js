@@ -1,50 +1,35 @@
 import { useState, useEffect } from "react";
 
 const ListSortLogic = ({ data, setData }) => {
-  const [nameSortDirection, setNameSortDirection] = useState("asc");
-  const [areaSortDirection, setAreaSortDirection] = useState("none");
-  const [roomsSortDirection, setroomsSortDirection] = useState("none");
-  const [levelSortDirection, setLevelSortDirection] = useState("none");
+  const [sortDirection, setSortDirection] = useState({
+    name: "asc",
+    area: "none",
+    rooms: "none",
+    level: "none",
+  });
 
   useEffect(() => {
     if (data) {
       let newData = [...data];
 
-      switch (true) {
-        case nameSortDirection !== "none":
-          newData = [...data].sort((a, b) => {
-            return compareNames(a.name, b.name, nameSortDirection);
-          });
-          break;
-        case areaSortDirection !== "none":
-          newData = [...data].sort((a, b) => {
-            return compareNumbers(a.area, b.area, areaSortDirection);
-          });
-          break;
-        case roomsSortDirection !== "none":
-          newData = [...data].sort((a, b) => {
-            return compareNumbers(a.rooms, b.rooms, roomsSortDirection);
-          });
-          break;
-        case levelSortDirection !== "none":
-          newData = [...data].sort((a, b) => {
-            return compareNumbers(a.level, b.level, levelSortDirection);
-          });
-          break;
-        default:
-          break;
-      }
+      newData.sort((a, b) => {
+        switch (true) {
+          case sortDirection.name !== "none":
+            return compareNames(a.name, b.name, sortDirection.name);
+          case sortDirection.area !== "none":
+            return compareNumbers(a.area, b.area, sortDirection.area);
+          case sortDirection.rooms !== "none":
+            return compareNumbers(a.rooms, b.rooms, sortDirection.rooms);
+          case sortDirection.level !== "none":
+            return compareNumbers(a.level, b.level, sortDirection.level);
+          default:
+            return 0;
+        }
+      });
 
       setData(newData);
     }
-  }, [
-    data,
-    nameSortDirection,
-    areaSortDirection,
-    roomsSortDirection,
-    levelSortDirection,
-    setData,
-  ]);
+  }, [data, sortDirection, setData]);
 
   const compareNames = (nameA, nameB, direction) => {
     const partsA = nameA.split("-");
@@ -65,54 +50,25 @@ const ListSortLogic = ({ data, setData }) => {
   };
 
   const handleSortDirectionChange = (column) => {
-    switch (column) {
-      case "name":
-        setNameSortDirection(nameSortDirection === "asc" ? "desc" : "asc");
-        setAreaSortDirection("none");
-        setroomsSortDirection("none");
-
-        setLevelSortDirection("none");
-        break;
-      case "area":
-        setAreaSortDirection(areaSortDirection === "asc" ? "desc" : "asc");
-        setNameSortDirection("none");
-        setroomsSortDirection("none");
-
-        setLevelSortDirection("none");
-        break;
-      case "rooms":
-        setroomsSortDirection(roomsSortDirection === "asc" ? "desc" : "asc");
-        setNameSortDirection("none");
-        setAreaSortDirection("none");
-
-        setLevelSortDirection("none");
-        break;
-      case "level":
-        setLevelSortDirection(levelSortDirection === "asc" ? "desc" : "asc");
-        setNameSortDirection("none");
-        setAreaSortDirection("none");
-        setroomsSortDirection("none");
-
-        break;
-      default:
-        break;
-    }
+    setSortDirection((prevSortDirection) => ({
+      ...prevSortDirection,
+      [column]: prevSortDirection[column] === "asc" ? "desc" : "asc",
+    }));
   };
 
   return (
     <div class="realEstate-header">
       <p onClick={() => handleSortDirectionChange("name")}>
-        Name {nameSortDirection === "asc" ? "↑" : "↓"}
+        Name {sortDirection.name === "asc" ? "↑" : "↓"}
       </p>
       <p onClick={() => handleSortDirectionChange("area")}>
-        Area {areaSortDirection === "asc" ? "↑" : "↓"}
+        Area {sortDirection.area === "asc" ? "↑" : "↓"}
       </p>
       <p onClick={() => handleSortDirectionChange("rooms")}>
-        Rooms {roomsSortDirection === "asc" ? "↑" : "↓"}
+        Rooms {sortDirection.rooms === "asc" ? "↑" : "↓"}
       </p>
-
       <p onClick={() => handleSortDirectionChange("level")}>
-        Level {levelSortDirection === "asc" ? "↑" : "↓"}
+        Level {sortDirection.level === "asc" ? "↑" : "↓"}
       </p>
     </div>
   );

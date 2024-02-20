@@ -4,7 +4,7 @@ import ListSortLogic from "./ListSortLogic";
 import LiteFilter from "./LiteFilter";
 import RealEstateTable from "./RealEstateTable";
 
-const RealEstateList = () => {
+const RealEstateList = ({ clickVisibleValueChange }) => {
   const {
     data: originalData,
     isPending,
@@ -36,7 +36,10 @@ const RealEstateList = () => {
       <LiteFilter data={startData} setData={handleFilterChange} />
       <div class="realEstate-list">
         <ListSortLogic data={filteredData} setData={handleSortedChange} />
-        <RealEstateTable data={sortedData} />
+        <RealEstateTable
+          data={sortedData}
+          clickVisibleValueChange={clickVisibleValueChange}
+        />
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const RealEstateTable = ({ data }) => {
+const RealEstateTable = ({ data, clickVisibleValueChange }) => {
   return (
     <div class="realEstate-items">
       {data &&
@@ -10,6 +10,7 @@ const RealEstateTable = ({ data }) => {
             to={`real-estate/${realEstate.id}`}
             class="realEstate-preview"
             key={realEstate.id}
+            onClick={() => clickVisibleValueChange(true)}
           >
             <p>{realEstate.name}</p>
             <p>
