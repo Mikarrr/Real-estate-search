@@ -8,8 +8,10 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <SearchHeader />
-        <SearchFilter />
+        <div className="App-header">
+          <SearchHeader />
+          <SearchFilter />
+        </div>
         <Routes>
           <Route path="/lite/*" element={<Lite />} />
         </Routes>

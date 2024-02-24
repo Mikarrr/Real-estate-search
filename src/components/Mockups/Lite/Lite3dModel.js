@@ -1,8 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Spline from "@splinetool/react-spline";
+import useFetchViewRealEstate from "../../useFetch/useFetchViewRealEstate";
+import { useParams } from "react-router-dom";
 
 const Lite3dModel = ({ clickVisible }) => {
+  const { id } = useParams();
   const [modelVisible, setModelVisible] = useState(false);
+  const { data: realEstate } = useFetchViewRealEstate(
+    `http://localhost:8000/realEstate/${id}`
+  );
 
   useEffect(() => {
     setModelVisible(clickVisible);
@@ -10,8 +16,8 @@ const Lite3dModel = ({ clickVisible }) => {
 
   return (
     <div className="model">
-      {modelVisible && (
-        <Spline scene="https://prod.spline.design/iOF632y195pYdrl0/scene.splinecode" />
+      {modelVisible && realEstate && realEstate.model && (
+        <Spline key={realEstate.id} scene={realEstate.model} />
       )}
     </div>
   );

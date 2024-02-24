@@ -1,14 +1,19 @@
+.App-header {
+  padding: 15px 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .searchHeader {
-  margin-top: 50px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100px;
+  justify-content: flex-start;
 
   h1 {
-    font-size: 40px;
+    font-size: 20px;
     font-weight: 600;
-    color: rgb(48, 48, 48);
+    color: white;
   }
 }

@@ -1,8 +1,9 @@
 import React from "react";
 import useFetchViewRealEstate from "../../useFetch/useFetchViewRealEstate";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
-const RealEstateSingle = ({ id, clickVisibleValueChange }) => {
+const RealEstateSingle = ({ clickVisibleValueChange }) => {
+  const { id } = useParams();
   const {
     data: realEstate,
     isPending,
