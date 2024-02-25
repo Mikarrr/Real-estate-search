@@ -19,7 +19,7 @@ const RealEstateSingle = ({ clickVisibleValueChange }) => {
           <div className="single-header">
             <h1>APARTMENT: {realEstate.name}</h1>
             <Link to={`/lite`} onClick={() => clickVisibleValueChange(false)}>
-              <p>return to the apartment search engine</p>
+              <p className="back-button">return to the apartment search</p>
             </Link>
             <p>Available</p>
           </div>
